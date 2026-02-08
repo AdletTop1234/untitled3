@@ -1,8 +1,9 @@
 package adletTop1234.service;
 
-import adletTop1234.model.SecondCourse;
+import adletTop1234.model.Dish;
 import adletTop1234.repository.DishRepository;
 import org.springframework.stereotype.Service;
+import adletTop1234.patterns.AppLogger;
 
 import java.util.List;
 
@@ -15,23 +16,26 @@ public class DishService {
         this.repository = repository;
     }
 
-    public SecondCourse create(SecondCourse secondCourse) {
-        return repository.save(secondCourse);
+    public Dish create(Dish dish) {
+        dish.validate();
+        Dish saved = repository.save(dish);
+        AppLogger.getInstance().log("Dish created: " + saved.getName());
+        return saved;
     }
 
-    public List<SecondCourse> getAll() {
+    public List<Dish> getAll() {
         return repository.findAll();
     }
 
-    public SecondCourse getById(Long id) {
+    public Dish getById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Dish not Found"));
     }
 
-    public SecondCourse update(Long id, SecondCourse secondCourse) {
-        SecondCourse existing = getById(id);
-        existing.setName(secondCourse.getName());
-        existing.setPrice(secondCourse.getPrice());
+    public Dish update(Long id, Dish dish) {
+        Dish existing = getById(id);
+        existing.setName(dish.getName());
+        existing.setPrice(dish.getPrice());
         return repository.save(existing);
     }
 

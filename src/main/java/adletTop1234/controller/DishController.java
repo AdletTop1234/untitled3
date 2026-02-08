@@ -1,13 +1,13 @@
 package adletTop1234.controller;
 
-import adletTop1234.model.SecondCourse;
+import adletTop1234.model.Dish;
 import adletTop1234.service.DishService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/books/")
+@RequestMapping("/dishes")
 public class DishController {
 
     private final DishService service;
@@ -18,26 +18,26 @@ public class DishController {
 
     // CREATE
     @PostMapping
-    public SecondCourse create(@RequestBody SecondCourse secondCourse) {
-        return service.create(secondCourse);
+    public Dish create(@RequestBody Dish dish) {
+        return service.create(dish);
     }
 
     // READ ALL
     @GetMapping
-    public List<SecondCourse> getAll() {
+    public List<Dish> getAll() {
         return service.getAll();
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public SecondCourse getById(@PathVariable Long id) {
+    public Dish getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     // UPDATE
     @PutMapping("/{id}")
-    public SecondCourse update(@PathVariable Long id, @RequestBody SecondCourse secondCourse) {
-        return service.update(id, secondCourse);
+    public Dish update(@PathVariable Long id, @RequestBody Dish dish) {
+        return service.update(id, dish);
     }
 
     // DELETE
