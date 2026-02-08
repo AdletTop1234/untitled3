@@ -25,7 +25,7 @@ public class DishService {
 
     public SecondCourse getById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+                .orElseThrow(() -> new RuntimeException("Dish not Found"));
     }
 
     public SecondCourse update(Long id, SecondCourse secondCourse) {
