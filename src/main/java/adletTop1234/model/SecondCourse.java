@@ -23,7 +23,6 @@ public abstract class SecondCourse implements Validatable, CalorieCalculable {
     @ManyToMany
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    // 👉 ОБЯЗАТЕЛЬНЫЙ пустой конструктор для JPA
     public SecondCourse() {}
 
     public SecondCourse(Long id, int price, String name) {
