@@ -45,4 +45,15 @@ public class DishController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+
+    @GetMapping("/{id}/calories")
+    public double getCalories(@PathVariable Long id) {
+        return service.getCalories(id);
+    }
+
+    @DeleteMapping("/cache")
+    public String clearCache() {
+        service.clearCache();
+        return "Cache cleared!";
+    }
 }
